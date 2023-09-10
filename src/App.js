@@ -1,25 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+
+import { useAuthContext } from './hooks/useAuthContext';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
+ // pages components
+import Navbar from './components/Navbar'; 
+import Home from './pages/home/Home';
+import Create from './pages/create/Create';
+import Search from './pages/search/Search';
+import Recipe from './pages/recipe/Recipe';
+import Signup from './signup/Signup';
+import Login from './login/Login';
+import './App.css'
+
 
 function App() {
+  const { authIsReady, user } = useAuthContext()
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <BrowserRouter>
+        <Navbar />
+        <Switch>
+        <Route exact path='/'>
+          {!user && <Redirect to="/login" />}
+          {user && <Home />
+         } 
+          </Route> 
+          <Route path='/login'>
+           {user && <Redirect to="/" />}
+           {!user && <Login />}
+          </Route>
+          <Route exact path="/create">
+            <Create />
+          </Route>
+          <Route exact path="/search">
+            <Search />
+          </Route>
+          <Route exact path="/Recipes/:id">
+            <Recipe />
+          </Route>
+          <Route path='/signup'>
+          {user && <Redirect to="/" />}
+          {!user &&  <Signup />} 
+        </Route>
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }
 
-export default App;
+export default App

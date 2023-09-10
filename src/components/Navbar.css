@@ -1,0 +1,45 @@
+/* Navbar container */
+.navbar {
+    width: 100%;
+    background: #effaf0;
+    padding: 20px 10px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Nome do site à esquerda */
+  .navbar .brand {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 1.2em;
+    justify-content: space-between;
+  }
+  
+  /* Itens de navegação à direita */
+  .navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .navbar .navbar-left {
+    margin-right: 16px; /* Espaço entre os itens à esquerda */
+
+  }
+  
+  .navbar .navbar-right {
+    margin-left: 16px; /* Espaço entre os itens à direita */
+  }
+  
+  .navbar a {
+    color: #333;
+    text-decoration: none;
+  }
+  
