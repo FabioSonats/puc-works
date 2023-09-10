@@ -21,3 +21,7 @@ jobs:
 
     - name: Test
       run: npm test
+    - name: Use Node.js 18.15.0
+      uses: actions/setup-node@v2
+      with:
+        node-version: 18.15.0
