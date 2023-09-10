@@ -13,7 +13,7 @@ import './App.css'
 
 
 function App() {
-  const { authIsReady, user } = useAuthContext()
+  const { user } = useAuthContext()
 
 
   return (
