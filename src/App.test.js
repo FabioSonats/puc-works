@@ -1,7 +1,7 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
-import { AuthContextProvider } from './context/AuthContext'; // Importe o seu provedor de contexto aqui
+// Importe o AuthContextProvider
+import { AuthContextProvider } from './seu-caminho-para-o-contexto/AuthContext';
 
+// No seu teste, envolva o componente App com o AuthContextProvider
 test('renders learn react link', () => {
   render(
     <AuthContextProvider>
