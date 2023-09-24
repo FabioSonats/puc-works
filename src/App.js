@@ -8,7 +8,6 @@ import Recipe from './pages/recipe/Recipe';
 import Signup from './signup/Signup';
 import Login from './login/Login';
 import { useAuthContext } from './hooks/useAuthContext';
-import { AuthContextProvider } from './caminho-para-seu-contexto-de-autenticacao';
 import './App.css';
 
 function App() {
