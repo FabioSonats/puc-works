@@ -1,47 +1,54 @@
-import { useAuthContext } from './hooks/useAuthContext';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import Navbar from './components/Navbar'; 
-import Home from './pages/home/Home';
-import Create from './pages/create/Create';
-import Search from './pages/search/Search';
-import Recipe from './pages/recipe/Recipe';
-import Signup from './signup/Signup';
-import Login from './login/Login';
-import './App.css';
+import { useState } from 'react'
+import { useSignup } from '../hooks/useSignup'
+import styles from './Signup.module.css'
 
-function App() {
-  const { user } = useAuthContext();
 
+export default function Signup() {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [ displayName, setDisplayName ]  = useState('')
+  const {signup} = useSignup()
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    signup(email, password, displayName)
+  }
+  
+
+
+  
   return (
-    <div>
-      <BrowserRouter>
-        <Navbar />
-        <Switch>
-          <Route exact path='/'>
-            {!user && <Redirect to="/login" />}
-            {user && <Home />}
-          </Route> 
-          <Route path='/login'>
-            {user && <Redirect to="/" />}
-            {!user && <Login />}
-          </Route>
-          <Route exact path="/create">
-            <Create />
-          </Route>
-          <Route exact path="/search">
-            <Search />
-          </Route>
-          <Route exact path="/Recipes/:id">
-            <Recipe />
-          </Route>
-          <Route path='/signup'>
-            {user && <Redirect to="/" />}
-            {!user && <Signup />} 
-          </Route>
-        </Switch>
-      </BrowserRouter>
-    </div>
-  );
+    <form onSubmit={handleSubmit} className={styles['signup-form']}>
+      <h2>Cadastro</h2>
+      <label>
+        <span>email:</span>
+            <input 
+                type="email"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+                >
+            </input> 
+    
+      </label>
+      <label>
+        <span>Senha:</span>
+        <input 
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+              >
+        </input> 
+      </label>
+      <label>
+      <span>Nome de usuário:</span>
+      <input 
+            type="Nome"
+            onChange={(e) => setDisplayName(e.target.value)}
+            value={displayName}
+            >
+      </input> 
+    </label>
+    <button className="btn">Sign up</button>
+    </form>
+  )
 }
-
-export default App;
