@@ -7,8 +7,8 @@ import Search from './pages/search/Search';
 import Recipe from './pages/recipe/Recipe';
 import Signup from './signup/Signup';
 import Login from './login/Login';
-import { useAuthContext } from './hooks/useAuthContext'; // Importe o hook de contexto de autenticação
-import { AuthContextProvider } from './caminho-para-seu-contexto-de-autenticacao'; // Importe seu contexto de autenticação
+import { useAuthContext } from './hooks/useAuthContext';
+import { AuthContextProvider } from './caminho-para-seu-contexto-de-autenticacao';
 import './App.css';
 
 function App() {
@@ -45,16 +45,3 @@ function App() {
 
 export default App;
 
-
-import React from 'react';
-import { render } from '@testing-library/react';
-import App from './App';
-import { AuthContextProvider } from './caminho-para-seu-contexto-de-autenticacao'; // Importe o contexto de autenticação
-
-test('renders learn react link', () => {
-  render(
-    <AuthContextProvider>
-      <App />
-    </AuthContextProvider>
-  );
-});
