@@ -18,12 +18,10 @@ function App() {
         <Navbar />
         <Switch>
           <Route exact path='/'>
-            {!user && <Redirect to="/login" />}
-            {user && <Home />}
+            {user ? <Home /> : <Redirect to="/login" />}
           </Route> 
           <Route path='/login'>
-            {user && <Redirect to="/" />}
-            {!user && <Login />}
+            {user ? <Redirect to="/" /> : <Login />}
           </Route>
           <Route exact path="/create">
             <Create />
@@ -35,8 +33,7 @@ function App() {
             <Recipe />
           </Route>
           <Route path='/signup'>
-            {user && <Redirect to="/" />}
-            {!user && <Signup />} 
+            {user ? <Redirect to="/" /> : <Signup />} 
           </Route>
         </Switch>
       </BrowserRouter>
