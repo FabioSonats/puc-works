@@ -26,21 +26,21 @@ export default function Navbar() {
             <Searchbar />
           </li>
           )}
-          {user && (
-            <li className="navbar-right">
-              <Link to='/create'>Crie uma receita</Link>
-            </li>
-          )}
-          <li className="navbar-right">
-            <Link to='/login'>Login</Link>
-          </li>
-          <li className="navbar-right">
-            <Link to='signup'>Cadastrar</Link>
-          </li>
-          {user && (
-            <li className="navbar-right">
-              <button className='btn' onClick={logout}>Sair</button>
-            </li>
+          {user ? (
+            <>
+              <li className="navbar-right">
+                <button className='btn' onClick={logout}>Sair</button>
+              </li>
+            </>
+          ) : (
+            <>
+              <li className="navbar-right">
+                <Link to='/login'>Login</Link>
+              </li>
+              <li className="navbar-right">
+                <Link to='signup'>Cadastrar</Link>
+              </li>
+            </>
           )}
         </ul>
       </nav>
